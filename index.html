@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VLine Consulting Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1f4e;
+    --navy-mid: #162a68;
+    --navy-light: #1e3575;
+    --gold: #c9993a;
+    --gold-light: #e4bb6a;
+    --gold-pale: #faf3e4;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --text-dark: #0d1f4e;
+    --text-mid: #3a4a6b;
+    --text-light: #7a8aab;
+    --amber: #BA7517;
+    --amber-bg: #FAEEDA;
+    --blue-accent: #185FA5;
+    --blue-bg: #E6F1FB;
+    --purple-accent: #534AB7;
+    --purple-bg: #EEEDFE;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .9rem 6%;
+    background: rgba(13,31,78,0.97);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(201,153,58,0.25);
+  }
+  .nav-logo { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+  .v-mark {
+    width: 34px; height: 34px; border: 2px solid var(--gold); border-radius: 6px;
+    display: grid; place-items: center;
+    font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: var(--gold);
+    background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+  }
+  .nav-logo-text { color: var(--white); font-size: .9rem; font-weight: 600; letter-spacing: .04em; }
+  .nav-logo-text span { color: var(--gold-light); font-size: .68rem; font-weight: 300; letter-spacing: .1em; display: block; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,.7); text-decoration: none; font-size: .85rem; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); font-weight: 700; font-size: .82rem;
+    padding: .55rem 1.3rem; border-radius: 4px; text-decoration: none; letter-spacing: .04em;
+    transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: .85; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh; background: var(--navy);
+    display: flex; align-items: center;
+    padding: 8rem 6% 5rem; position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(201,153,58,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201,153,58,.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  #hero::before {
+    content: ''; position: absolute; top: 0; right: -5%; width: 55%; height: 100%;
+    background: linear-gradient(150deg, rgba(201,153,58,.08) 0%, transparent 60%);
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  #hero::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+  }
+  .hero-circle {
+    position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+    width: 420px; height: 420px; border-radius: 50%;
+    border: 1px solid rgba(201,153,58,.15); pointer-events: none;
+    animation: rotateRing 30s linear infinite;
+  }
+  .hero-circle::before { content: ''; position: absolute; inset: 30px; border-radius: 50%; border: 1px solid rgba(201,153,58,.08); }
+  @keyframes rotateRing { to { transform: translateY(-50%) rotate(360deg); } }
+
+  .hero-content { position: relative; z-index: 2; max-width: 620px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: .5rem;
+    border: 1px solid rgba(201,153,58,.4); padding: .3rem .85rem; border-radius: 2px;
+    font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 1.6rem;
+    animation: fadeUp .8s ease both;
+  }
+  .hero-tag span { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem); font-weight: 900; line-height: 1.08;
+    color: var(--white); animation: fadeUp .8s .15s ease both; margin-bottom: 1.2rem;
+  }
+  h1 em { font-style: normal; color: var(--gold); }
+  .hero-sub {
+    font-size: 1rem; font-weight: 300; line-height: 1.8;
+    color: rgba(255,255,255,.6); animation: fadeUp .8s .3s ease both; margin-bottom: 2.2rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp .8s .45s ease both; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); font-weight: 700; font-size: .9rem;
+    padding: .85rem 1.9rem; border-radius: 4px; text-decoration: none; letter-spacing: .03em;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 8px 24px rgba(201,153,58,.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,153,58,.4); }
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85);
+    font-weight: 500; font-size: .9rem; padding: .85rem 1.9rem; border-radius: 4px; text-decoration: none;
+    transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3.5rem;
+    animation: fadeUp .8s .6s ease both;
+    padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.1); flex-wrap: wrap;
+  }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 900; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: .72rem; color: rgba(255,255,255,.45); letter-spacing: .06em; text-transform: uppercase; margin-top: .25rem; }
+
+  /* ── SHARED ── */
+  .section-tag {
+    font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: .7rem;
+    display: flex; align-items: center; gap: .55rem;
+  }
+  .section-tag::before { content: ''; width: 20px; height: 2px; background: var(--gold); }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; line-height: 1.15; color: var(--text-dark);
+  }
+  .section-title em { font-style: normal; color: var(--navy-mid); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--white);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: center;
+    padding: 6rem 6%;
+  }
+  .about-card {
+    background: var(--navy); border-radius: 12px; padding: 2.8rem; position: relative; overflow: hidden;
+  }
+  .about-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+  .about-card-quote { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--white); line-height: 1.5; margin-bottom: 1.4rem; }
+  .about-card-quote span { color: var(--gold); }
+  .about-card-name strong { color: var(--gold-light); display: block; font-size: .95rem; }
+  .about-card-name { color: rgba(255,255,255,.55); font-size: .8rem; font-weight: 500; }
+  .about-badge {
+    position: absolute; bottom: -1.4rem; right: 1.8rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); font-weight: 800; font-size: .74rem;
+    padding: .8rem 1.3rem; border-radius: 8px; text-align: center;
+    box-shadow: 0 8px 24px rgba(201,153,58,.4); letter-spacing: .04em;
+  }
+  .about-badge strong { display: block; font-size: 1.5rem; font-family: 'Playfair Display', serif; }
+  .about-text p { font-size: .98rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 1.3rem; font-weight: 300; }
+  .about-text p strong { color: var(--navy); font-weight: 600; }
+  .about-pillars { display: flex; flex-direction: column; gap: .65rem; margin-top: 1.6rem; }
+  .pillar {
+    display: flex; align-items: center; gap: .9rem;
+    padding: .8rem 1.1rem; border-radius: 6px;
+    border-left: 3px solid var(--gold); background: var(--cream);
+    font-size: .88rem; font-weight: 500; color: var(--text-dark);
+  }
+
+  /* ═══════════════════════════════════════════
+     ── FIND YOUR SECTOR (the hero feature) ──
+  ═══════════════════════════════════════════ */
+  #find-sector {
+    background: var(--cream);
+    padding: 6rem 6%;
+  }
+  .sector-intro { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+  .sector-intro .section-tag { justify-content: center; }
+  .sector-intro .section-tag::before { display: none; }
+  .sector-intro p { font-size: 1rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; margin-top: .8rem; }
+
+  /* Big tier selector cards */
+  .tier-selector { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-bottom: 2.5rem; }
+  .tier-btn {
+    background: var(--white); border: 2px solid transparent;
+    border-radius: 12px; padding: 1.6rem 1.4rem;
+    cursor: pointer; text-align: left; transition: all .25s;
+    position: relative; overflow: hidden;
+  }
+  .tier-btn::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    opacity: 0; transition: opacity .25s;
+  }
+  .tier-btn.t-street::after { background: linear-gradient(90deg, #BA7517, #e4a84a); }
+  .tier-btn.t-mid::after   { background: linear-gradient(90deg, #185FA5, #4a9de0); }
+  .tier-btn.t-corp::after  { background: linear-gradient(90deg, #534AB7, #9089e8); }
+
+  .tier-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(13,31,78,.1); }
+  .tier-btn.active { border-color: var(--navy); box-shadow: 0 8px 28px rgba(13,31,78,.15); }
+  .tier-btn.active.t-street { border-color: var(--amber); }
+  .tier-btn.active.t-mid    { border-color: var(--blue-accent); }
+  .tier-btn.active.t-corp   { border-color: var(--purple-accent); }
+  .tier-btn.active::after   { opacity: 1; }
+
+  .tier-icon-wrap {
+    width: 52px; height: 52px; border-radius: 12px;
+    display: grid; place-items: center; font-size: 1.6rem; margin-bottom: 1rem;
+  }
+  .t-street .tier-icon-wrap { background: var(--amber-bg); }
+  .t-mid    .tier-icon-wrap { background: var(--blue-bg); }
+  .t-corp   .tier-icon-wrap { background: var(--purple-bg); }
+
+  .tier-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: .3rem; }
+  .tier-sub  { font-size: .78rem; color: var(--text-light); font-weight: 400; margin-bottom: .8rem; }
+  .tier-examples { display: flex; flex-wrap: wrap; gap: .3rem; }
+  .tier-chip {
+    font-size: .68rem; font-weight: 600; padding: .2rem .55rem; border-radius: 2px;
+  }
+  .t-street .tier-chip { background: var(--amber-bg); color: var(--amber); }
+  .t-mid    .tier-chip { background: var(--blue-bg);   color: var(--blue-accent); }
+  .t-corp   .tier-chip { background: var(--purple-bg); color: var(--purple-accent); }
+
+  .tier-arrow {
+    position: absolute; top: 1.2rem; right: 1.2rem;
+    font-size: .85rem; color: var(--text-light); transition: color .2s, transform .2s;
+  }
+  .tier-btn.active .tier-arrow { color: var(--navy); transform: rotate(90deg); }
+
+  /* Panel below selectors */
+  .sector-panel { display: none; }
+  .sector-panel.active { display: block; animation: fadeUp .5s ease both; }
+
+  .panel-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.5rem; padding: 1.4rem 1.8rem;
+    border-radius: 10px; gap: 1rem;
+  }
+  .panel-header.street { background: var(--amber-bg); border-left: 4px solid var(--amber); }
+  .panel-header.mid    { background: var(--blue-bg);   border-left: 4px solid var(--blue-accent); }
+  .panel-header.corp   { background: var(--purple-bg); border-left: 4px solid var(--purple-accent); }
+
+  .panel-header-left h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--text-dark); }
+  .panel-header-left p  { font-size: .85rem; color: var(--text-mid); margin-top: .25rem; font-weight: 300; }
+  .panel-header .expand-all-btn {
+    white-space: nowrap; font-size: .78rem; font-weight: 600; cursor: pointer;
+    border: none; background: none; color: var(--text-mid); padding: .4rem .8rem;
+    border-radius: 4px; transition: background .2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .panel-header .expand-all-btn:hover { background: rgba(0,0,0,.06); }
+
+  /* Business cards grid */
+  .biz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .biz-card {
+    background: var(--white); border-radius: 10px; overflow: hidden;
+    border: 1.5px solid rgba(13,31,78,.08);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .biz-card:hover { box-shadow: 0 8px 24px rgba(13,31,78,.09); }
+  .biz-card.open { border-color: var(--navy); }
+  .biz-card-header {
+    padding: 1rem 1.1rem; display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; gap: .7rem;
+  }
+  .biz-card-left { display: flex; align-items: center; gap: .7rem; }
+  .biz-icon-box {
+    width: 38px; height: 38px; border-radius: 8px;
+    display: grid; place-items: center; font-size: 1.1rem; flex-shrink: 0;
+  }
+  .street .biz-icon-box { background: var(--amber-bg); }
+  .mid    .biz-icon-box { background: var(--blue-bg); }
+  .corp   .biz-icon-box { background: var(--purple-bg); }
+  .biz-name { font-size: .9rem; font-weight: 600; color: var(--text-dark); line-height: 1.3; }
+  .biz-tag  { font-size: .67rem; font-weight: 600; padding: .18rem .5rem; border-radius: 2px; }
+  .street .biz-tag { background: var(--amber-bg); color: var(--amber); }
+  .mid    .biz-tag { background: var(--blue-bg);   color: var(--blue-accent); }
+  .corp   .biz-tag { background: var(--purple-bg); color: var(--purple-accent); }
+  .biz-chevron { font-size: .7rem; color: var(--text-light); transition: transform .25s; flex-shrink: 0; }
+  .biz-card.open .biz-chevron { transform: rotate(180deg); }
+
+  .biz-body {
+    display: none; padding: 0 1.1rem 1.1rem;
+    border-top: 1px solid rgba(13,31,78,.07);
+  }
+  .biz-card.open .biz-body { display: block; }
+
+  /* Inside each biz card */
+  .biz-section { margin-top: .85rem; }
+  .biz-section-label {
+    font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    margin-bottom: .45rem;
+  }
+  .street .biz-section-label { color: var(--amber); }
+  .mid    .biz-section-label { color: var(--blue-accent); }
+  .corp   .biz-section-label { color: var(--purple-accent); }
+
+  .biz-section p { font-size: .82rem; color: var(--text-mid); line-height: 1.7; font-style: italic; font-weight: 300; }
+
+  .biz-section ul { padding-left: 1rem; }
+  .biz-section li { font-size: .82rem; color: var(--text-mid); line-height: 1.7; margin-bottom: .2rem; }
+
+  /* AI Solutions — highlighted */
+  .ai-solutions-block {
+    margin-top: .85rem;
+    border-radius: 8px; overflow: hidden;
+    border: 1px solid rgba(13,31,78,.1);
+  }
+  .ai-solutions-head {
+    display: flex; align-items: center; gap: .5rem;
+    padding: .55rem .9rem;
+    font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  }
+  .street .ai-solutions-head { background: var(--amber-bg); color: var(--amber); }
+  .mid    .ai-solutions-head { background: var(--blue-bg);   color: var(--blue-accent); }
+  .corp   .ai-solutions-head { background: var(--purple-bg); color: var(--purple-accent); }
+
+  .ai-solutions-list { padding: .7rem .9rem; background: var(--white); }
+  .ai-sol-item {
+    display: flex; gap: .6rem; align-items: flex-start;
+    padding: .4rem 0; border-bottom: 1px solid rgba(13,31,78,.05);
+  }
+  .ai-sol-item:last-child { border-bottom: none; }
+  .ai-sol-dot {
+    width: 18px; height: 18px; border-radius: 4px;
+    display: grid; place-items: center; font-size: .7rem; flex-shrink: 0; margin-top: 1px;
+  }
+  .street .ai-sol-dot { background: var(--amber-bg); color: var(--amber); }
+  .mid    .ai-sol-dot { background: var(--blue-bg);   color: var(--blue-accent); }
+  .corp   .ai-sol-dot { background: var(--purple-bg); color: var(--purple-accent); }
+  .ai-sol-text { font-size: .8rem; color: var(--text-dark); line-height: 1.55; font-weight: 500; }
+  .ai-sol-text span { display: block; font-size: .74rem; color: var(--text-light); font-weight: 300; margin-top: 1px; }
+
+  .outcome-pill {
+    display: inline-flex; align-items: center; gap: .4rem;
+    margin-top: .9rem; padding: .45rem .9rem; border-radius: 6px;
+    font-size: .78rem; font-weight: 600; line-height: 1.5;
+  }
+  .street .outcome-pill { background: var(--amber-bg); color: var(--amber); }
+  .mid    .outcome-pill { background: var(--blue-bg);   color: var(--blue-accent); }
+  .corp   .outcome-pill { background: var(--purple-bg); color: var(--purple-accent); }
+
+  /* ── PROCESS ── */
+  #process {
+    background: var(--navy); color: var(--white); padding: 6rem 6%;
+  }
+  #process .section-title { color: var(--white); }
+  #process .section-tag { color: var(--gold-light); }
+  #process .section-tag::before { background: var(--gold-light); }
+  .process-sub { color: rgba(255,255,255,.55); font-size: .95rem; line-height: 1.75; max-width: 480px; margin-top: .8rem; font-weight: 300; }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 3.5rem; position: relative; }
+  .process-steps::before {
+    content: ''; position: absolute; top: 1.9rem; left: 12%; right: 12%;
+    height: 1px; background: linear-gradient(90deg, var(--gold), rgba(201,153,58,.2), var(--gold));
+  }
+  .step { text-align: center; padding: 0 .8rem; }
+  .step-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); font-weight: 900; font-size: .95rem;
+    display: grid; place-items: center; margin: 0 auto 1.2rem;
+    position: relative; z-index: 1;
+    box-shadow: 0 4px 14px rgba(201,153,58,.4);
+    font-family: 'Playfair Display', serif;
+  }
+  .step-title { font-weight: 700; font-size: .9rem; color: var(--white); margin-bottom: .4rem; }
+  .step-desc { font-size: .79rem; color: rgba(255,255,255,.45); line-height: 1.65; font-weight: 300; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; padding: 6rem 6%; }
+  .contact-intro { font-size: .98rem; line-height: 1.8; color: var(--text-mid); font-weight: 300; margin-bottom: 2.2rem; }
+  .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item {
+    display: flex; gap: .9rem; align-items: center;
+    padding: .9rem 1.1rem; border-radius: 6px;
+    background: var(--cream); border-left: 3px solid var(--gold);
+  }
+  .c-icon { width: 36px; height: 36px; background: var(--navy); border-radius: 8px; display: grid; place-items: center; font-size: .95rem; flex-shrink: 0; }
+  .c-label { font-size: .68rem; color: var(--text-light); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .c-value { font-size: .92rem; font-weight: 600; color: var(--text-dark); }
+
+  .contact-form { background: var(--navy); border-radius: 12px; padding: 2.6rem; position: relative; overflow: hidden; }
+  .contact-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+  .form-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--white); margin-bottom: .4rem; }
+  .form-sub { font-size: .82rem; color: rgba(255,255,255,.45); margin-bottom: 1.8rem; font-weight: 300; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-group label { display: block; font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: .4rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.11);
+    color: var(--white); font-family: 'DM Sans', sans-serif; font-size: .9rem; font-weight: 300;
+    padding: .75rem .95rem; border-radius: 6px; outline: none; transition: border-color .2s, background .2s;
+    appearance: none;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,.28); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); background: rgba(201,153,58,.07); }
+  .form-group select option { background: var(--navy); color: var(--white); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%; background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); font-weight: 700; font-size: .9rem; letter-spacing: .04em;
+    border: none; padding: .95rem; border-radius: 6px; cursor: pointer;
+    transition: opacity .2s, transform .2s; font-family: 'DM Sans', sans-serif; margin-top: .4rem;
+    box-shadow: 0 8px 22px rgba(201,153,58,.3);
+  }
+  .form-submit:hover { opacity: .87; transform: translateY(-1px); }
+  .form-success { display: none; text-align: center; padding: 2rem 1rem; }
+  .form-success .check { font-size: 2.4rem; margin-bottom: .7rem; }
+  .form-success strong { color: var(--gold-light); display: block; font-size: 1.05rem; margin-bottom: .35rem; }
+  .form-success p { color: rgba(255,255,255,.65); font-size: .9rem; }
+
+  /* ── FOOTER ── */
+  footer { background: #070f2a; color: rgba(255,255,255,.4); text-align: center; padding: 1.6rem 6%; font-size: .78rem; border-top: 1px solid rgba(201,153,58,.18); }
+  footer span { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    #about, #contact { grid-template-columns: 1fr; }
+    .tier-selector { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; row-gap: 2rem; }
+    .process-steps::before { display: none; }
+    .nav-links { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-circle { display: none; }
+    .about-visual { display: none; }
+    .biz-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="v-mark">V</div>
+    <div class="nav-logo-text">VLine <span>Consulting Services</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#find-sector">Find Your Sector</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book a Call</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-content">
+    <div class="hero-tag"><span></span> AI Business Consulting · Nigeria</div>
+    <h1>Clarity.<br><em>Strategy.</em><br>Growth.</h1>
+    <p class="hero-sub">
+      From grassroots traders to corporate enterprises — we help every type of Nigerian business unlock their potential with structured systems and intelligent AI adoption.
+    </p>
+    <div class="hero-btns">
+      <a href="#find-sector" class="btn-primary">Find Your Business Type</a>
+      <a href="#contact" class="btn-outline">Book a Consultation</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">3</div><div class="stat-label">Business Tiers Served</div></div>
+      <div><div class="stat-num">20+</div><div class="stat-label">Business Types Covered</div></div>
+      <div><div class="stat-num">AI</div><div class="stat-label">Digital Transformation</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <div class="about-visual" style="position:relative; padding-bottom: 2.5rem;">
+    <div class="about-card">
+      <div class="about-card-quote">"Most businesses don't fail from lack of hustle — they fail from <span>lack of structure.</span> We fix that."</div>
+      <div class="about-card-name"><strong>Victoria Ufot Ukpong</strong>AI Business Consultant · VLine Consulting</div>
+    </div>
+    <div class="about-badge"><strong>VLine</strong>Consulting Services</div>
+  </div>
+  <div class="about-text" style="padding-top:.5rem;">
+    <div class="section-tag">About Us</div>
+    <h2 class="section-title">Built to help businesses<br><em>find their footing</em> and scale</h2>
+    <p style="margin-top:1.1rem">VLine Consulting Services specialises in <strong>strategy clarity, operational systems, and AI-powered digital transformation</strong> — built for Nigerian businesses at every scale.</p>
+    <p>Led by <strong>Victoria Ufot Ukpong</strong>, we deliver real frameworks tailored to the African business environment, not copy-pasted solutions.</p>
+    <div class="about-pillars">
+      <div class="pillar">🎯 <strong>Clarity</strong> — Know exactly where your business stands</div>
+      <div class="pillar">🗺️ <strong>Strategy</strong> — Roadmaps built around your market realities</div>
+      <div class="pillar">📈 <strong>Growth</strong> — Systems and AI tools that scale with you</div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND YOUR SECTOR -->
+<section id="find-sector">
+  <div class="sector-intro reveal">
+    <div class="section-tag" style="justify-content:center;">
+      <span style="font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);">Which Business Are You?</span>
+    </div>
+    <h2 class="section-title" style="text-align:center;">Find your sector —<br><em>see exactly what we'll do for you</em></h2>
+    <p>Select the tier that best describes your business. Each type is expanded with the specific AI and consulting solutions VLine will deliver for you.</p>
+  </div>
+
+  <div class="tier-selector reveal">
+    <!-- Street -->
+    <button class="tier-btn t-street active" onclick="selectTier('street', this)">
+      <span class="tier-arrow">›</span>
+      <div class="tier-icon-wrap">🏪</div>
+      <div class="tier-name">Street-Level SMEs</div>
+      <div class="tier-sub">Grassroots Businesses</div>
+      <div class="tier-examples">
+        <span class="tier-chip">Fabric Traders</span>
+        <span class="tier-chip">Caterers</span>
+        <span class="tier-chip">Fashion Designers</span>
+        <span class="tier-chip">Dispatch</span>
+        <span class="tier-chip">Hair Salons</span>
+      </div>
+    </button>
+    <!-- Mid -->
+    <button class="tier-btn t-mid" onclick="selectTier('mid', this)">
+      <span class="tier-arrow">›</span>
+      <div class="tier-icon-wrap">🏢</div>
+      <div class="tier-name">Mid-Level Businesses</div>
+      <div class="tier-sub">Growing Organisations</div>
+      <div class="tier-examples">
+        <span class="tier-chip">Private Schools</span>
+        <span class="tier-chip">Clinics</span>
+        <span class="tier-chip">Real Estate</span>
+        <span class="tier-chip">Digital Agencies</span>
+        <span class="tier-chip">Cooperatives</span>
+      </div>
+    </button>
+    <!-- Corp -->
+    <button class="tier-btn t-corp" onclick="selectTier('corp', this)">
+      <span class="tier-arrow">›</span>
+      <div class="tier-icon-wrap">🏦</div>
+      <div class="tier-name">Corporate & Institutional</div>
+      <div class="tier-sub">Enterprises & NGOs</div>
+      <div class="tier-examples">
+        <span class="tier-chip">Banks</span>
+        <span class="tier-chip">FMCG</span>
+        <span class="tier-chip">Telecoms</span>
+        <span class="tier-chip">NGOs</span>
+        <span class="tier-chip">Fintechs</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- STREET PANEL -->
+  <div class="sector-panel street active" id="panel-street">
+    <div class="panel-header street">
+      <div class="panel-header-left">
+        <h3>Street &amp; Local-Level SMEs</h3>
+        <p>Grassroots businesses losing time and money to manual processes — we bring structure, visibility, and simple systems.</p>
+      </div>
+      <button class="expand-all-btn" onclick="expandAll('panel-street')">Expand all ↓</button>
+    </div>
+    <div class="biz-grid" id="grid-street"></div>
+  </div>
+
+  <!-- MID PANEL -->
+  <div class="sector-panel mid" id="panel-mid">
+    <div class="panel-header mid">
+      <div class="panel-header-left">
+        <h3>Mid-Level Local Businesses</h3>
+        <p>Structured but inefficient — drowning in manual work. We automate, streamline, and build scalable operational frameworks.</p>
+      </div>
+      <button class="expand-all-btn" onclick="expandAll('panel-mid')">Expand all ↓</button>
+    </div>
+    <div class="biz-grid" id="grid-mid"></div>
+  </div>
+
+  <!-- CORP PANEL -->
+  <div class="sector-panel corp" id="panel-corp">
+    <div class="panel-header corp">
+      <div class="panel-header-left">
+        <h3>Corporate &amp; Institutional</h3>
+        <p>Decision-makers with digital transformation mandates — we build AI roadmaps, staff training, and governance frameworks.</p>
+      </div>
+      <button class="expand-all-btn" onclick="expandAll('panel-corp')">Expand all ↓</button>
+    </div>
+    <div class="biz-grid" id="grid-corp"></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="reveal">
+  <div class="section-tag">How It Works</div>
+  <h2 class="section-title">Our engagement process</h2>
+  <p class="process-sub">Every engagement follows a proven pathway — from understanding your reality to measurable outcomes.</p>
+  <div class="process-steps">
+    <div class="step"><div class="step-num">1</div><div class="step-title">Discovery Call</div><div class="step-desc">A deep-dive session to understand your business, challenges, and goals.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-title">Business Audit</div><div class="step-desc">We assess your systems, processes, and gaps with a structured diagnostic.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-title">Strategy Design</div><div class="step-desc">A tailored roadmap — clear, actionable, and fitted to your scale.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-title">Implementation</div><div class="step-desc">We work alongside your team to execute, measure, and refine.</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-title">Let's talk about<br><em>your business</em></h2>
+    <p class="contact-intro" style="margin-top:.9rem;">Whether you're a first-time entrepreneur or a growing organisation, the first step is a conversation. Reach out and let's get started.</p>
+    <div class="contact-details">
+      <div class="contact-item"><div class="c-icon">📞</div><div><div class="c-label">Phone / WhatsApp</div><div class="c-value">07089071359</div></div></div>
+      <div class="contact-item"><div class="c-icon">👤</div><div><div class="c-label">Consultant</div><div class="c-value">Victoria Ufot Ukpong</div></div></div>
+      <div class="contact-item"><div class="c-icon">🌍</div><div><div class="c-label">Location</div><div class="c-value">Nigeria · Available Remotely</div></div></div>
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="contact-form" id="contactForm">
+      <div class="form-title">Start a Conversation</div>
+      <div class="form-sub">Fill in your details and we'll respond within 24 hours</div>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="e.g. Amara"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="e.g. Okonkwo"></div>
+      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com"></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+234 ..."></div>
+      <div class="form-group">
+        <label>Business Type</label>
+        <select>
+          <option value="" disabled selected>Select your business scale</option>
+          <option>Street-Level SME (Grassroots)</option>
+          <option>Mid-Level Business (Growing)</option>
+          <option>Corporate / Institutional</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Tell us about your challenge</label><textarea placeholder="Briefly describe what you need help with..."></textarea></div>
+      <button class="form-submit" onclick="submitForm()">Send Message →</button>
+      <div class="form-success" id="formSuccess">
+        <div class="check">✅</div>
+        <strong>Message received!</strong>
+        <p>Thank you. Victoria will get back to you within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><p>© 2025 <span>VLine Consulting Services</span> · Clarity. Strategy. Growth. · All rights reserved.</p></footer>
+
+<script>
+/* ─── DATA ─── */
+const data = {
+  street: [
+    {
+      icon:"🧵", name:"Fabric & Textile Traders", tag:"Retail & Trading",
+      problem:"Managing stock, pricing, and bulk orders manually with no record-keeping system.",
+      responsibilities:["Audit stock management and sales tracking practices","Set up AI-assisted inventory tools or WhatsApp-based order management","Train traders to use automated restock and supplier follow-up reminders","Create a basic customer database to track repeat buyers","Recommend affordable digital payment and invoicing workflows"],
+      aiSolutions:[
+        {title:"AI Inventory Assistant", desc:"WhatsApp-linked chatbot that tracks stock in/out and alerts you when a fabric line needs restocking."},
+        {title:"Automated Customer Follow-up", desc:"Send personalised restock messages to repeat buyers automatically when their favourite fabric arrives."},
+        {title:"Digital Invoice Generator", desc:"Instantly generate professional invoices from a simple order form — no manual writing."},
+        {title:"Demand Forecasting Dashboard", desc:"Simple AI tool that analyses past sales to predict which fabrics will move fastest each season."}
+      ],
+      outcome:"Traders gain visibility over stock, reduce losses, and serve customers faster with less guesswork."
+    },
+    {
+      icon:"🏪", name:"Provision Store Owners", tag:"Retail & Trading",
+      problem:"Scaling to multiple branches with no system for tracking sales, staff, or stock across locations.",
+      responsibilities:["Map current workflows across branches","Implement a POS or inventory system for multi-branch tracking","Automate daily sales reporting across locations","Train store managers on digital tools","Build a dashboard for remote monitoring"],
+      aiSolutions:[
+        {title:"Multi-Branch Sales Dashboard", desc:"Real-time view of all branch sales, stock levels, and staff performance from your phone."},
+        {title:"Automated Daily Reports", desc:"AI compiles and sends you a WhatsApp summary of each branch's performance every evening."},
+        {title:"Smart Restock Alerts", desc:"AI predicts stock needs per branch and sends purchase reminders before you run out."},
+        {title:"Staff Accountability System", desc:"Automated shift logs and sales performance summaries to track staff without being physically present."}
+      ],
+      outcome:"Owner gains real-time visibility and control across all branches without being physically present."
+    },
+    {
+      icon:"💻", name:"Electronics Dealers (Computer Village)", tag:"Retail & Trading",
+      problem:"Losing customers to competitors who respond faster and look more professional online.",
+      responsibilities:["Audit how inquiries, pricing, and after-sales are currently handled","Set up automated WhatsApp responses and product catalogues","Build a CRM to track inquiries and follow-up prompts","Create AI-assisted product description templates","Train staff on faster quotation and order processing"],
+      aiSolutions:[
+        {title:"WhatsApp AI Responder", desc:"Auto-replies to product inquiries instantly with specs, prices, and availability — 24/7."},
+        {title:"AI Product Listings", desc:"Generate professional product descriptions for Jiji, Instagram, and your WhatsApp catalogue in seconds."},
+        {title:"Customer Follow-up CRM", desc:"Tracks every inquiry and prompts your team to follow up with undecided customers at the right time."},
+        {title:"Quote Generator", desc:"Staff type a few details and the tool produces a clean, professional quote to send the customer instantly."}
+      ],
+      outcome:"Dealers convert more inquiries, respond faster, and build a reputation for professionalism."
+    },
+    {
+      icon:"🍽️", name:"Catering & Event Caterers", tag:"Food & Hospitality",
+      problem:"Managing dozens of client orders manually via WhatsApp with no confirmation, tracking, or invoicing system.",
+      responsibilities:["Document the order-to-delivery process","Set up an order management system with automated confirmations","Create invoice and payment tracking templates","Build a client follow-up workflow for repeat bookings","Train owner and assistants on the system"],
+      aiSolutions:[
+        {title:"Digital Order Intake Form", desc:"Clients fill a simple form; the system auto-confirms the order and sends a payment link."},
+        {title:"Auto-Invoice Generator", desc:"Generates a branded invoice the moment an order is confirmed — no manual typing."},
+        {title:"Production Schedule AI", desc:"Automatically builds a prep and cooking schedule based on all confirmed bookings for the week."},
+        {title:"Repeat-Booking Reminder", desc:"Follows up with past clients 2 weeks before their anniversary, event season, or usual booking date."}
+      ],
+      outcome:"Caterers reduce errors, collect payment on time, and build a client base that books repeatedly."
+    },
+    {
+      icon:"🎂", name:"Cake & Confectionery Businesses", tag:"Food & Hospitality",
+      problem:"Taking custom orders via WhatsApp with no deposit tracking, deadline reminders, or production schedule.",
+      responsibilities:["Design an order intake form with automated confirmations","Build a production calendar tied to order deadlines","Set up automated balance collection reminders","Create a testimonial and referral capture workflow","Train the owner to run the system independently"],
+      aiSolutions:[
+        {title:"Order & Deposit Tracker", desc:"Automated form captures order details, sends deposit request, and logs confirmation — all in one flow."},
+        {title:"AI Production Calendar", desc:"Auto-schedules baking days based on order deadlines and sends daily prep reminders."},
+        {title:"Balance Collection Bot", desc:"Sends automated WhatsApp reminders for outstanding balance 48hrs and 24hrs before delivery."},
+        {title:"Review Request Automation", desc:"Sends a review request and referral incentive message to clients 2 hours after delivery confirmation."}
+      ],
+      outcome:"Business runs on a clear schedule, cash flow improves, and missed orders become rare."
+    },
+    {
+      icon:"✂️", name:"Tailors & Fashion Designers", tag:"Fashion & Beauty",
+      problem:"Managing client measurements, delivery dates, and payments entirely from memory or paper notes.",
+      responsibilities:["Audit how client orders and timelines are tracked","Set up a digital client record system with measurement storage","Build automated reminders for pickup and balance payment","Create a portfolio and inquiry capture system","Train designer and assistants on digital record-keeping"],
+      aiSolutions:[
+        {title:"Digital Client Measurement Vault", desc:"Stores every client's measurements digitally — searchable, never lost, accessible from any device."},
+        {title:"Delivery Date Reminder System", desc:"Sends automated alerts to you and the client 3 days and 1 day before pickup — zero missed deadlines."},
+        {title:"AI Instagram Caption Generator", desc:"Creates on-brand captions for outfit photos, saving 30+ minutes of writing per post."},
+        {title:"Testimonial Collection Bot", desc:"Automatically messages happy clients requesting a review or referral shortly after collection."}
+      ],
+      outcome:"Designers reduce missed deadlines, improve client retention, and look more professional to new clients."
+    },
+    {
+      icon:"💄", name:"Makeup Artists & Hair Salons", tag:"Fashion & Beauty",
+      problem:"No booking system, no follow-up process, and no way to retain customers between visits.",
+      responsibilities:["Map client acquisition and appointment process","Set up a booking link with automated confirmation messages","Build a follow-up workflow to prompt past clients to rebook","Create a loyalty or referral programme with automated tracking","Train owner to manage the system weekly"],
+      aiSolutions:[
+        {title:"Online Booking System", desc:"Clients book their own appointments via a link — you get notified and confirmations are sent automatically."},
+        {title:"Rebooking Reminder Bot", desc:"Sends a personalised WhatsApp message to clients who haven't booked in 3–4 weeks."},
+        {title:"AI Loyalty Tracker", desc:"Tracks visits per client and automatically triggers a free or discounted offer at every 5th visit."},
+        {title:"Before & After Post Generator", desc:"AI writes engaging captions for transformation photos, boosting Instagram reach and new client enquiries."}
+      ],
+      outcome:"Bookings become predictable, client retention improves, and income stabilises month to month."
+    },
+    {
+      icon:"🚚", name:"Dispatch & Delivery Businesses", tag:"Logistics & Transport",
+      problem:"Coordinating drivers, tracking deliveries, and communicating with customers entirely by phone calls.",
+      responsibilities:["Document the dispatch process end to end","Recommend and set up a basic delivery tracking tool","Build automated customer WhatsApp updates at key delivery stages","Create a driver assignment and daily manifest system","Train operations staff and drivers on the new workflow"],
+      aiSolutions:[
+        {title:"Automated Delivery Status Updates", desc:"Customers receive automatic WhatsApp updates — 'order picked up', 'en route', 'delivered' — no manual calls."},
+        {title:"Driver Assignment Dashboard", desc:"Auto-assigns orders to available drivers based on location and capacity, viewable from a single screen."},
+        {title:"AI Route Optimiser", desc:"Suggests the most efficient delivery routes for each driver to save fuel and reduce delivery time."},
+        {title:"Complaint Resolution Bot", desc:"Handles 'where is my order?' messages automatically, reducing calls to operations staff by 60%."}
+      ],
+      outcome:"Fewer missed deliveries, faster complaint resolution, and a more professional customer experience."
+    },
+    {
+      icon:"⚖️", name:"Independent Legal Practitioners", tag:"Professional Services",
+      problem:"Managing client matters, deadlines, and billing manually with no organised system.",
+      responsibilities:["Audit client intake, matter tracking, and invoicing","Set up a simple case management and deadline tracking tool","Automate invoice generation and payment follow-up","Build a client onboarding checklist and document storage workflow","Train practitioner to maintain system with minimal daily effort"],
+      aiSolutions:[
+        {title:"AI Matter Tracker", desc:"Organises all active cases with deadline alerts, status updates, and document links in one place."},
+        {title:"Automated Invoice & Follow-up", desc:"Generates invoice on matter milestone and sends automated reminders for outstanding fees."},
+        {title:"Client Onboarding Kit", desc:"Digital intake form auto-populates a welcome letter, retainer agreement draft, and document checklist."},
+        {title:"AI Legal Brief Assistant", desc:"Helps draft first-pass briefs, letters, and standard agreements, cutting research and drafting time significantly."}
+      ],
+      outcome:"Practitioner spends more time on legal work and less on administration, with fewer missed deadlines."
+    },
+    {
+      icon:"🏠", name:"Estate Agents & Property Managers", tag:"Professional Services",
+      problem:"Managing property listings, client inquiries, and inspection schedules manually across WhatsApp chats.",
+      responsibilities:["Map current property listing and client management workflow","Set up a property CRM with automated inquiry responses","Build an inspection scheduling system with client confirmations","Create AI-assisted listing descriptions","Train agents on lead tracking and conversion"],
+      aiSolutions:[
+        {title:"AI Listing Description Writer", desc:"Produces professional property listings for Jiji, Instagram, and direct channels in under 60 seconds."},
+        {title:"Lead Capture & Follow-up CRM", desc:"Every inquiry is logged automatically; agents get reminders to follow up leads that go cold."},
+        {title:"Inspection Booking System", desc:"Clients self-schedule inspections from a link; agent gets a calendar notification and confirmation is auto-sent."},
+        {title:"Tenant Onboarding Workflow", desc:"Auto-generates tenancy agreement drafts, payment schedules, and welcome packs when a deal closes."}
+      ],
+      outcome:"Agents respond to more leads, close deals faster, and manage portfolios without dropping the ball."
+    }
+  ],
+  mid: [
+    {
+      icon:"🏫", name:"Private Schools", tag:"Education & Training",
+      problem:"Running admissions, fees, timetables, and parent communication manually with growing student numbers.",
+      responsibilities:["Audit administration workflows across admissions, fees, and communication","Implement a school management system with automated fee reminders","Set up a parent communication portal","Build AI-assisted report writing tools for teachers","Train admin staff and leadership on digital systems","Create SOPs for sustainable operation"],
+      aiSolutions:[
+        {title:"Automated Fee Reminder System", desc:"Parents receive SMS/WhatsApp reminders for upcoming fees, reducing collections chasing by over 70%."},
+        {title:"AI Report Card Generator", desc:"Teachers input marks; AI drafts personalised academic comments for each student in minutes."},
+        {title:"Parent Communication Portal", desc:"Centralised platform for school notices, results, and announcements — replacing scattered WhatsApp broadcasts."},
+        {title:"Admissions Pipeline Manager", desc:"Tracks every prospective parent from inquiry to enrolment with automated follow-ups at each stage."},
+        {title:"Timetable Optimisation Tool", desc:"AI-assisted scheduling that minimises clashes, balances teacher load, and adjusts for absences automatically."}
+      ],
+      outcome:"School runs more professionally, parents are better informed, and staff spend less time on paperwork."
+    },
+    {
+      icon:"📚", name:"Vocational & Coaching Centres", tag:"Education & Training",
+      problem:"Managing student enrolment, class schedules, and certification tracking with no central system.",
+      responsibilities:["Map enrolment, scheduling, and student progress tracking","Set up an LMS or enrolment management tool","Automate student reminders for classes and assessments","Build a lead nurturing workflow from inquiry to enrolment","Train administrative and teaching staff"],
+      aiSolutions:[
+        {title:"Lead Nurture Automation", desc:"Prospective students receive a structured sequence of follow-up messages from first inquiry to enrolment."},
+        {title:"Learning Management System (LMS)", desc:"Hosts course materials, tracks student progress, and issues digital certificates on completion automatically."},
+        {title:"AI Course Content Assistant", desc:"Helps tutors create lesson notes, quizzes, and assignments faster using AI content generation."},
+        {title:"Student Dropout Early Warning", desc:"Flags students who miss classes or fall behind, prompting tutors to intervene before they quit."}
+      ],
+      outcome:"Enrolment increases, dropout reduces, and the centre builds a reputation for organised delivery."
+    },
+    {
+      icon:"🏥", name:"Private Clinics & Pharmacies", tag:"Healthcare",
+      problem:"Managing patient records, appointment scheduling, and drug inventory on paper or spreadsheets.",
+      responsibilities:["Audit patient flow, records management, and inventory","Implement a clinic management or EMR system","Automate appointment reminders and follow-up messages","Build a drug inventory tracking and restock alert system","Train front desk, nurses, and pharmacists","Ensure patient data privacy standards"],
+      aiSolutions:[
+        {title:"Electronic Medical Records (EMR)", desc:"Digitises patient records with secure search, history viewing, and prescription logs accessible by authorised staff."},
+        {title:"Appointment Reminder Bot", desc:"Sends automated reminders to patients 24hrs and 2hrs before their appointment — reducing no-shows by 40%+."},
+        {title:"Drug Inventory AI Alert", desc:"Tracks drug stock levels and triggers purchase orders automatically when supplies fall below threshold."},
+        {title:"AI Patient Discharge Summary", desc:"Generates structured discharge notes and after-care instructions from consultation data, saving doctor admin time."},
+        {title:"Patient Recall System", desc:"Automatically reminds patients when they are due for follow-up, routine checks, or prescription refills."}
+      ],
+      outcome:"Patients experience shorter waits, fewer errors, and the clinic operates with greater clinical efficiency."
+    },
+    {
+      icon:"🦷", name:"Dental & Optical Practices", tag:"Healthcare",
+      problem:"Losing patients to competitors due to poor follow-up and no recall system for routine appointments.",
+      responsibilities:["Map patient acquisition, appointment, and recall touchpoints","Set up automated recall messages for routine checkups","Build a patient satisfaction capture workflow","Create an online booking or WhatsApp appointment system","Train front desk staff on managing the digital patient journey"],
+      aiSolutions:[
+        {title:"Automated Recall Messaging", desc:"Patients receive a personalised reminder when their 6-month check-up or lens review is due — automatically."},
+        {title:"Online Appointment Booking", desc:"Patients book slots directly from a WhatsApp link or website; confirmations and reminders are auto-sent."},
+        {title:"Post-Visit Satisfaction Survey", desc:"A short AI-triggered survey lands in the patient's WhatsApp within 1 hour of leaving the practice."},
+        {title:"Treatment Plan Follow-up Bot", desc:"Reminds patients who received treatment quotes to book their next step before they forget or go elsewhere."}
+      ],
+      outcome:"Patient retention improves, no-shows reduce, and the practice builds a loyal returning patient base."
+    },
+    {
+      icon:"🏘️", name:"Short-Let & Property Firms", tag:"Real Estate",
+      problem:"Managing bookings, guest communication, and maintenance across multiple properties manually.",
+      responsibilities:["Audit end-to-end guest or tenant management process","Set up a property management tool with automated confirmations","Build AI-generated listing descriptions for Airbnb and direct channels","Create automated guest communication workflows","Train property managers and support staff"],
+      aiSolutions:[
+        {title:"Booking Automation System", desc:"Booking confirmations, payment reminders, check-in instructions, and checkout messages are all sent automatically."},
+        {title:"AI Listing Optimiser", desc:"Rewrites Airbnb and property descriptions using high-performing language to attract more bookings."},
+        {title:"Guest Communication Chatbot", desc:"Handles FAQs from guests (WiFi, parking, checkout time) without involving staff — 24/7."},
+        {title:"Maintenance Request Tracker", desc:"Guests log maintenance issues via a simple form; system assigns to the right person and tracks resolution."}
+      ],
+      outcome:"Occupancy improves, guest experience becomes consistent, and operational errors reduce significantly."
+    },
+    {
+      icon:"🤝", name:"Cooperatives & Microfinance", tag:"Financial Services",
+      problem:"Managing contributions, loans, and member records manually in spreadsheets or physical registers.",
+      responsibilities:["Map contribution, loan, and repayment tracking workflows","Implement a cooperative management or fintech platform","Automate contribution reminders and loan repayment alerts","Build a member dashboard for transparency","Train administrators and executives"],
+      aiSolutions:[
+        {title:"Member Contribution Tracker", desc:"Automated monthly contribution alerts sent to all members, with instant receipts on payment."},
+        {title:"Loan Application & Approval System", desc:"Digital loan form, automated eligibility checks, and AI-generated repayment schedules."},
+        {title:"Repayment Reminder Bot", desc:"Members receive reminders 5 days and 1 day before loan repayment due dates via WhatsApp."},
+        {title:"Member Self-Service Dashboard", desc:"Each member can check their balance, loan status, and contribution history without calling admin."}
+      ],
+      outcome:"Members trust the system more, delinquencies reduce, and leadership spends less time on manual reconciliation."
+    },
+    {
+      icon:"📸", name:"Photography & Creative Studios", tag:"Media & Creative",
+      problem:"Managing bookings, client briefs, and project timelines through scattered WhatsApp conversations.",
+      responsibilities:["Audit client booking, briefing, and delivery process","Set up a project management and client communication tool","Build automated booking confirmations and delivery checklists","Create a client gallery or portfolio delivery workflow","Train studio owner and assistants"],
+      aiSolutions:[
+        {title:"Client Booking & Brief Form", desc:"Clients book sessions and fill a pre-shoot brief form; system confirms booking and adds to production calendar."},
+        {title:"AI Caption & Content Writer", desc:"Generates Instagram captions, behind-the-scenes content, and client testimonial requests automatically."},
+        {title:"Gallery Delivery Automation", desc:"Sends clients a personalised gallery link with download instructions the moment editing is complete."},
+        {title:"Project Timeline Manager", desc:"Tracks every shoot from booking to delivery with automated reminders for each milestone."}
+      ],
+      outcome:"Clients experience a more professional service, projects are delivered on time, and referrals increase."
+    },
+    {
+      icon:"📣", name:"Digital Marketing Agencies", tag:"Media & Creative",
+      problem:"Managing multiple client campaigns without efficient systems, causing delays and inconsistent quality.",
+      responsibilities:["Audit campaign management, content production, and reporting workflows","Implement AI content tools and project management software","Build automated client reporting templates","Create internal SOPs for briefing, execution, and review","Train account managers and creatives on AI tools"],
+      aiSolutions:[
+        {title:"AI Content Production Pipeline", desc:"Strategy → copy → creative briefs → captions all produced using AI tools, cutting content creation time by 50%."},
+        {title:"Automated Client Reporting", desc:"AI compiles campaign data and generates a client-ready performance report every week — no manual formatting."},
+        {title:"Campaign Brief AI Assistant", desc:"Transforms a client brief into structured campaign strategies, target audiences, and content pillars instantly."},
+        {title:"Client Portal & Approval Workflow", desc:"Clients review and approve content in one place, eliminating the chaos of WhatsApp approval threads."}
+      ],
+      outcome:"Agency handles more clients at the same team size, with faster turnaround and more consistent output quality."
+    }
+  ],
+  corp: [
+    {
+      icon:"🏦", name:"Banks & Financial Institutions", tag:"Corporate",
+      problem:"L&D and operations teams need AI literacy training and workflow automation but lack internal expertise.",
+      responsibilities:["Engage L&D leads, COOs, and innovation managers to assess AI readiness","Design and deliver an AI Readiness Workshop for senior leadership","Develop a phased AI adoption roadmap","Identify automation opportunities in operations, compliance, and customer service","Build a staff AI literacy programme","Produce a documented AI strategy and implementation retainer proposal"],
+      aiSolutions:[
+        {title:"AI Readiness Assessment", desc:"A structured audit of all departments to score current AI maturity and identify the highest-value quick wins."},
+        {title:"Staff AI Literacy Programme", desc:"Tiered training for frontline staff, managers, and leadership — from AI basics to workflow application."},
+        {title:"Operations Automation Roadmap", desc:"End-to-end plan to automate customer service, compliance checks, and back-office workflows using AI tools."},
+        {title:"AI Governance Policy Framework", desc:"Establishes clear internal policies on acceptable AI use, data privacy, and tool procurement standards."},
+        {title:"Customer Service Chatbot Strategy", desc:"Designs and implements AI-powered customer service bots to handle tier-1 inquiries across digital channels."}
+      ],
+      outcome:"Institution moves from AI curiosity to structured adoption with measurable operational improvements."
+    },
+    {
+      icon:"🏭", name:"FMCG & Manufacturing Companies", tag:"Corporate",
+      problem:"Operations directors need workflow automation and HR managers need structured staff training systems.",
+      responsibilities:["Conduct operational audit to identify manual bottlenecks","Recommend AI-assisted process automation tools","Build a staff training and onboarding system using AI content tools","Design performance tracking dashboards for operations leadership","Develop change management frameworks","Deliver ongoing advisory on retainer"],
+      aiSolutions:[
+        {title:"Supply Chain Workflow Automation", desc:"Automates purchase orders, supplier follow-ups, and delivery confirmations, reducing manual coordination by 60%."},
+        {title:"AI Staff Training Content Builder", desc:"Generates onboarding materials, SOPs, and training modules for new hires at scale using AI content tools."},
+        {title:"Operations Performance Dashboard", desc:"Real-time visibility into production output, bottlenecks, and team performance for leadership."},
+        {title:"AI-Assisted Quality Control Logs", desc:"Digitises QC checkpoints with automatic exception flagging and shift supervisor alerts."},
+        {title:"Change Management Programme", desc:"Structured framework to prepare staff for new AI tools — reducing resistance and accelerating adoption."}
+      ],
+      outcome:"Operational efficiency improves, training costs reduce, and leadership gains data-driven visibility."
+    },
+    {
+      icon:"📡", name:"Telecoms Companies", tag:"Corporate",
+      problem:"Innovation and operations teams need AI content systems and operational efficiency frameworks.",
+      responsibilities:["Map current AI gaps with innovation and operations leads","Design AI content and communication systems","Build workflow automation for customer success and operations","Facilitate AI adoption workshops for cross-functional teams","Develop an internal AI governance and usage policy","Publish thought leadership positioning the company as AI-forward"],
+      aiSolutions:[
+        {title:"AI Content & Communication System", desc:"Builds AI-powered templates for internal comms, customer campaigns, and technical documentation."},
+        {title:"Customer Success Automation", desc:"AI handles tier-1 customer issues, escalates complex cases, and logs all interactions automatically."},
+        {title:"AI Adoption Workshop Series", desc:"Cross-functional workshops teaching teams in customer care, IT, marketing, and operations how to use AI daily."},
+        {title:"Internal AI Governance Policy", desc:"A clear, practical policy document governing how staff use AI — covering data privacy, tool access, and accountability."},
+        {title:"Thought Leadership Content Programme", desc:"AI-assisted content strategy positioning the telecom as an innovation leader through whitepapers and LinkedIn."}
+      ],
+      outcome:"Company accelerates internal AI adoption with a structured governance model and trained workforce."
+    },
+    {
+      icon:"🧬", name:"Fintech & Healthtech Startups", tag:"Tech & Startups",
+      problem:"Founders scaling operations need AI systems for customer success, support, and internal efficiency.",
+      responsibilities:["Audit operational workflows from onboarding to customer retention","Implement AI-powered customer success and support automation","Build internal knowledge bases and AI-assisted team onboarding tools","Design data workflows and reporting dashboards","Train operations and product teams on AI workflows","Advise on AI vendor selection"],
+      aiSolutions:[
+        {title:"Customer Onboarding Automation", desc:"End-to-end onboarding flow — welcome sequences, verification prompts, and first-activation nudges — all automated."},
+        {title:"AI Support Chatbot", desc:"Handles FAQs, troubleshooting, and escalations automatically, reducing support ticket volume by 50%+."},
+        {title:"Internal Knowledge Base", desc:"AI-searchable hub of SOPs, product docs, and FAQs — so new hires find answers without asking the founder."},
+        {title:"Churn Prediction Model", desc:"AI flags customers showing disengagement signals so the success team can intervene before they churn."},
+        {title:"Startup AI Vendor Advisory", desc:"Unbiased recommendations on which AI tools suit your current stage — avoiding costly, premature investments."}
+      ],
+      outcome:"Startup scales operations without proportional headcount increase and customer experience improves."
+    },
+    {
+      icon:"🌍", name:"NGOs & Development Organisations", tag:"Development Sector",
+      problem:"Programme offices need efficient M&E, reporting, and communication systems to satisfy funders.",
+      responsibilities:["Audit programme delivery, M&E, and donor reporting workflows","Implement AI-assisted report writing and data summarisation tools","Build beneficiary tracking and programme management systems","Create internal knowledge management workflows","Train programme officers and M&E teams","Develop a digital strategy aligned to funder requirements"],
+      aiSolutions:[
+        {title:"AI Donor Report Writer", desc:"Transforms raw programme data into polished, funder-ready narrative reports in a fraction of the time."},
+        {title:"Beneficiary Tracking System", desc:"Digital database tracking beneficiary enrolment, participation, and outcomes — accessible to programme teams."},
+        {title:"M&E Data Dashboard", desc:"Visualises programme indicators and KPIs in real time for leadership, funders, and field teams."},
+        {title:"AI Knowledge Management Hub", desc:"Centralises programme learnings, reports, and SOPs in a searchable internal wiki — nothing gets lost."},
+        {title:"Grant Writing AI Assistant", desc:"Helps programme and resource mobilisation teams draft compelling grant proposals faster using AI."}
+      ],
+      outcome:"Programme teams spend more time on impact delivery and less on reporting administration."
+    },
+    {
+      icon:"🎓", name:"L&D Teams in Large Organisations", tag:"Corporate",
+      problem:"L&D leads need to upskill a large workforce on AI but lack a structured, scalable training curriculum.",
+      responsibilities:["Assess current staff AI literacy levels across departments","Design a tiered AI training curriculum for different roles","Develop e-learning modules, facilitator guides, and exercises","Deliver pilot training cohorts and refine based on feedback","Build an internal AI champions programme","Report on adoption metrics and recommend ongoing development pathways"],
+      aiSolutions:[
+        {title:"Tiered AI Curriculum Design", desc:"A full curriculum mapped to role types — frontline, managers, and executives — each with practical exercises."},
+        {title:"E-Learning Module Creation", desc:"AI-assisted creation of engaging digital training modules deployable on any LMS platform."},
+        {title:"AI Champions Programme", desc:"Identifies and trains internal AI champions who sustain learning and troubleshoot adoption across departments."},
+        {title:"Training Impact Dashboard", desc:"Tracks completion rates, assessment scores, and behavioural change indicators post-training."},
+        {title:"Ongoing Advisory Retainer", desc:"Monthly sessions to review AI adoption progress, surface new tools, and adjust the learning roadmap."}
+      ],
+      outcome:"Organisation builds lasting internal AI capability rather than a one-off awareness event."
+    }
+  ]
+};
+
+/* ─── BUILD CARDS ─── */
+function buildCards(gridId, items, tierClass) {
+  const grid = document.getElementById(gridId);
+  items.forEach(item => {
+    const card = document.createElement('div');
+    card.className = `biz-card ${tierClass}`;
+    card.innerHTML = `
+      <div class="biz-card-header" onclick="toggleCard(this.parentElement)">
+        <div class="biz-card-left">
+          <div class="biz-icon-box">${item.icon}</div>
+          <span class="biz-name">${item.name}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.5rem">
+          <span class="biz-tag">${item.tag}</span>
+          <span class="biz-chevron">▼</span>
+        </div>
+      </div>
+      <div class="biz-body">
+        <div class="biz-section">
+          <div class="biz-section-label">The Problem We Solve</div>
+          <p>${item.problem}</p>
+        </div>
+        <div class="biz-section">
+          <div class="biz-section-label">What VLine Will Do</div>
+          <ul>${item.responsibilities.map(r=>`<li>${r}</li>`).join('')}</ul>
+        </div>
+        <div class="ai-solutions-block">
+          <div class="ai-solutions-head">🤖 Sample AI Solutions We'll Implement</div>
+          <div class="ai-solutions-list">
+            ${item.aiSolutions.map(s=>`
+              <div class="ai-sol-item">
+                <div class="ai-sol-dot">✦</div>
+                <div class="ai-sol-text">${s.title}<span>${s.desc}</span></div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div class="biz-section">
+          <span class="outcome-pill">🎯 ${item.outcome}</span>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function toggleCard(card) { card.classList.toggle('open'); }
+
+function expandAll(panelId) {
+  document.querySelectorAll(`#${panelId} .biz-card`).forEach(c => c.classList.add('open'));
+}
+
+function selectTier(tier, btn) {
+  document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.sector-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + tier).classList.add('active');
+}
+
+/* ─── INIT ─── */
+buildCards('grid-street', data.street, 'street');
+buildCards('grid-mid',    data.mid,    'mid');
+buildCards('grid-corp',   data.corp,   'corp');
+
+/* ─── SCROLL REVEAL ─── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ─── FORM ─── */
+function submitForm() {
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = 'Sending...'; btn.style.opacity = '.6';
+  setTimeout(() => {
+    document.querySelectorAll('#contactForm .form-group, #contactForm .form-row, #contactForm .form-title, #contactForm .form-sub').forEach(el => el.style.display = 'none');
+    btn.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }, 1200);
+}
+</script>
+</body>
+</html>
